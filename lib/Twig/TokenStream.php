@@ -63,6 +63,13 @@ class Twig_TokenStream
         return $this->tokens[$this->current - 1];
     }
 
+    public function nextIf($primary, $secondary = null)
+    {
+        if ($this->tokens[$this->current]->test($primary, $secondary)) {
+            return $this->next();
+        }
+    }
+
     /**
      * Tests a token and returns it or throws a syntax error.
      *
